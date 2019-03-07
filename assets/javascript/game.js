@@ -10,30 +10,25 @@ var playerScore = 0;
 var targetScore = 0;
 //WINLOSS 
 var playerWins = 0;
-var PlayerLosses = 0;
+var playerLosses = 0;
 
-///////////////////
-//SET TARGETSCORE//
-///////////////////
-var targetScore = Math.floor((Math.random() * 120) + 19)
+///////////
+//(RE)SET//
+///////////
+newDmg();
 
 /////////////////
 //UPDATE TARGET//
 /////////////////
 $("#targetScore").text(targetScore)
 
-///////////
-//(RE)SET//
-///////////
-newDmg()
-
 ////////////////////////////////
 //GETTING ATTRIBUTES FROM HTML//
 ////////////////////////////////
-$("#robot").attr("dmg", robot)
-$("#soldier").attr("dmg", soldier)
-$("#fortress").attr("dmg", fortress)
-$("#skirmisher").attr("dmg", skirmisher)
+$("#robot").attr("dmg", robot);
+$("#soldier").attr("dmg", soldier);
+$("#fortress").attr("dmg", fortress);
+$("#skirmisher").attr("dmg", skirmisher);
 
 
 
@@ -53,7 +48,7 @@ $("button").click(function () {
 //NEWDMG.NOWRK//
 ////////////////
 $("#reload").click(function () {
-    newDmg()
+    newDmg();
     console.log("RELOAD CLICKED")
 })
 
@@ -62,6 +57,8 @@ $("#reload").click(function () {
 ////////////////////////
 function updateScore() {
     $("#playerScore").text(playerScore);
+    $("#targetScore").text(targetScore)
+
 }
 
 /////////////////
@@ -95,5 +92,6 @@ function newDmg() {
     playerScore = 0;
     targetScore = Math.floor((Math.random() * 120) + 19);
     console.log("newDmg triggered");
+    updateScore();
 }
 
