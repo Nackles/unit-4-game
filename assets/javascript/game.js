@@ -15,45 +15,47 @@ var PlayerLosses = 0;
 ///////////////////
 //SET TARGETSCORE//
 ///////////////////
-var targetScore = Math.floor((Math.random() * 120) + 19);
+var targetScore = Math.floor((Math.random() * 120) + 19)
 
 /////////////////
 //UPDATE TARGET//
 /////////////////
-$("#targetScore").text(targetScore);
+$("#targetScore").text(targetScore)
 
 ///////////
 //(RE)SET//
 ///////////
-newDmg();
-winLoss();
+newDmg()
 
 ////////////////////////////////
 //GETTING ATTRIBUTES FROM HTML//
 ////////////////////////////////
-$("#robot").attr("dmg", robot);
-$("#soldier").attr("dmg", soldier);
-$("#fortress").attr("dmg", fortress);
-$("#skirmisher").attr("dmg", skirmisher);
+$("#robot").attr("dmg", robot)
+$("#soldier").attr("dmg", soldier)
+$("#fortress").attr("dmg", fortress)
+$("#skirmisher").attr("dmg", skirmisher)
+
+
+
+///////////////
+//CLICKS BABY//
+///////////////
+$("button").click(function () {
+    functionalDmg = ($(this).attr("dmg"));
+    playerScore += parseInt(functionalDmg);
+    console.log(playerScore);
+    updateScore();
+    winLoss();
+})
 
 ////////////////
 //RESET BUTTON//
 //NEWDMG.NOWRK//
 ////////////////
-$("#reload").on("click", function () {
-    newDmg();
-    console.log("RELOAD CLICKED");
-});
-
-///////////////
-//CLICKS BABY//
-///////////////
-$("button").on("click", function () {
-    functionalDmg = ($(this).attr("dmg"));
-    playerScore += parseInt(functionalDmg);
-    console.log(playerScore);
-    updateScore();
-});
+$("#reload").click(function () {
+    newDmg()
+    console.log("RELOAD CLICKED")
+})
 
 ////////////////////////
 //UPDATING PLAYERSCORE//
@@ -66,18 +68,17 @@ function updateScore() {
 //CHECK WINLOSS//
 /////////////////
 function winLoss() {
-    if (playerScore === targetScore) {
+    if (parseInt(playerScore) > (parseInt(targetScore))) {
+        //loss condition
+        console.log("loss condition");
+        playerLosses += 1;
+        $("#playerLosses").text(playerLosses);
+        newDmg();
+    } else if (parseInt(playerScore) === (parseInt(targetScore))) {
         //win condition
         console.log("win condition");
         playerWins += 1;
         $("#playerWins").text(playerWins);
-        newDmg();
-
-    } else if (playerScore > targetScore) {
-        //loss condition
-        console.log("loss condition");
-        PlayerLosses += 1;
-        $("#playerLosses").text(playerLosses);
         newDmg();
     }
 }
