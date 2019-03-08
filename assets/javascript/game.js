@@ -22,16 +22,6 @@ newDmg();
 /////////////////
 $("#targetScore").text(targetScore)
 
-////////////////////////////////
-//GETTING ATTRIBUTES FROM HTML//
-////////////////////////////////
-$("#robot").attr("dmg", robot);
-$("#soldier").attr("dmg", soldier);
-$("#fortress").attr("dmg", fortress);
-$("#skirmisher").attr("dmg", skirmisher);
-
-
-
 ///////////////
 //CLICKS BABY//
 ///////////////
@@ -93,5 +83,12 @@ function newDmg() {
     targetScore = Math.floor((Math.random() * 120) + 19);
     console.log("newDmg triggered");
     updateScore();
+    ////////////////////////////////
+    //GETTING ATTRIBUTES FROM HTML//
+    ////////////////////////////////
+    $("#robot").attr("dmg", robot);
+    $("#soldier").attr("dmg", soldier);
+    $("#fortress").attr("dmg", fortress);
+    $("#skirmisher").attr("dmg", skirmisher);
 }
 
